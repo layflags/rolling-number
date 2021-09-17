@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>&lt;layflags-rolling-number&gt; - Demo</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        min-height: 100vh;
+        background: linear-gradient(45deg, lightgoldenrodyellow, lightcyan);
+      }
+      body {
+        color: black;
+        font-family: monospace;
+        margin: 0;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 200%;
+        margin: 1.4rem 0;
+      }
+      h1 span {
+        font-size: 60%;
+        color: blue;
+        text-transform: uppercase;
+      }
+      form {
+        display: flex;
+        width: 100%;
+        max-width: 600px;
+        font-size: 200%;
+        border-radius: 0.4rem;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+      }
+      form input,
+      form button {
+        font-family: inherit;
+        font-size: inherit;
+        border: none;
+        padding: 0.2em 0.6em;
+        border-radius: 0.4rem;
+        border-left: 0.05em solid white;
+        display: block;
+      }
+      form input {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        background-color: white;
+        color: black;
+        flex-grow: 1;
+        width: 100%;
+      }
+      form button {
+        background-color: blue;
+        color: white;
+        padding-right: 0.75em;
+      }
+      form button[type="button"] {
+        border-radius: 0;
+        background-color: green;
+      }
+      form button[type="submit"] {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+      form button:hover {
+        background-color: darkblue;
+      }
+      form button:active {
+        color: lightblue;
+      }
+      textarea {
+        border: none;
+        padding: 1em;
+        border-radius: 0.4rem;
+        width: 100%;
+        max-width: 600px;
+        font: inherit;
+      }
+      .output {
+        font-size: 500%;
+        margin: 1.4rem 0 0.4rem 0;
+        color: green;
+        background-color: lightgreen;
+        display: inline-block;
+        padding: 0 0.2em;
+        border: 1px solid rgb(0, 180, 0);
+        border-radius: 0.4rem;
+      }
+    </style>
+    <script type="module" src="./rolling-number.js"></script>
+  </head>
+  <body>
+    <a
+      href="https://github.com/layflags/rolling-number"
+      title="Show project on GitHub"
+      style="float: right"
+      ><img src="./github.svg" width="32" height="32" alt="GitHub Logo"
+    /></a>
+    <h1>&lt;layflags-rolling-number&gt;<br /><span>Demo</span></h1>
+    <p>
+      &lt;layflags-rolling-number&gt; is an easy-to-use inline Web Component
+      that shows a nice rolling digit animation and automatically adapts to the
+      surrounding font style (family, color, size, etc.).
+    </p>
+
+    <h2>Playground</h2>
+    <form id="form">
+      <input type="number" name="number" value="123" size="6" />
+      <button type="button" id="randomize">rnd</button>
+      <button type="submit">set</button>
+    </form>
+
+    <div class="output">
+      <layflags-rolling-number class="rolling" style="--roll-duration: 750ms"
+        >123</layflags-rolling-number
+      >°C
+    </div>
+
+    <p style="font-family: serif; font-style: italic">
+      It's around
+      <layflags-rolling-number class="rolling" style="--roll-duration: 1500ms"
+        >123</layflags-rolling-number
+      >°C at the moment!
+    </p>
+
+    <p></p>
+
+    <h2>Usage</h2>
+    <p>
+      <textarea readonly rows="12">
+<script type="module" src="https://unpkg.com/@layflags/rolling-number@1.0.0/rolling-number.js"></script>
+
+<!-- value by fallback -->
+<layflags-rolling-number>123</layflags-rolling-number>
+
+<!-- value w/o fallback -->
+<layflags-rolling-number value="123"></layflags-rolling-number>
+
+<!-- customize roll duration -->
+<layflags-rolling-number style="--roll-duration:750ms">123</layflags-rolling-number>
+      </textarea>
+    </p>
+
+    <hr />
+
+    <p>
+      <small
+        >2021 by
+        <a href="https://www.layfla.gs" target="_blank">layflags</a></small
+      >
+    </p>
+
+    <script>
+      document.getElementById("form").addEventListener("submit", (evt) => {
+        const { value } = evt.target.number;
+        document.querySelectorAll(".rolling").forEach((node) => {
+          node.value = value;
+        });
+        evt.preventDefault();
+      });
+      document.getElementById("randomize").addEventListener("click", (evt) => {
+        const randomValue = Math.round(Math.random() * 998) - 499;
+        evt.target.form.number.value = randomValue;
+        document.querySelectorAll(".rolling").forEach((node) => {
+          node.value = randomValue;
+        });
+      });
+    </script>
+  </body>
+</html>
