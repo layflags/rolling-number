@@ -16,7 +16,17 @@
         color: black;
         font-family: monospace;
         margin: 0;
-        padding: 1em;
+        padding: 0;
+      }
+      main {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 2em 1em;
+      }
+      hr {
+        border: none;
+        border-top: 1px solid rgba(0, 0, 0, 0.3);
+          margin: 1.5rem 0;
       }
       h1 {
         font-size: 200%;
@@ -30,7 +40,6 @@
       form {
         display: flex;
         width: 100%;
-        max-width: 600px;
         font-size: 200%;
         border-radius: 0.4rem;
         box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
@@ -94,44 +103,45 @@
     <script type="module" src="./rolling-number.js"></script>
   </head>
   <body>
-    <a
-      href="https://github.com/layflags/rolling-number"
-      title="Show project on GitHub"
-      style="float: right"
-      ><img src="./github.svg" width="32" height="32" alt="GitHub Logo"
-    /></a>
-    <h1>&lt;layflags-rolling-number&gt;<br /><span>Demo</span></h1>
-    <p>
-      &lt;layflags-rolling-number&gt; is an easy-to-use inline Web Component
-      that shows a nice rolling digit animation and automatically adapts to the
-      surrounding font style (family, color, size, etc.).
-    </p>
+    <main>
+      <a
+        href="https://github.com/layflags/rolling-number"
+        title="Show project on GitHub"
+        style="float: right"
+        ><img src="./github.svg" width="32" height="32" alt="GitHub Logo"
+      /></a>
+      <h1>&lt;layflags-rolling-number&gt;<br /><span>Demo</span></h1>
+      <p>
+        &lt;layflags-rolling-number&gt; is an easy-to-use inline Web Component
+        that shows a nice rolling digit animation and automatically adapts to
+        the surrounding font style (family, color, size, etc.).
+      </p>
 
-    <h2>Playground</h2>
-    <form id="form">
-      <input type="number" name="number" value="123" size="6" />
-      <button type="button" id="randomize">rnd</button>
-      <button type="submit">set</button>
-    </form>
+      <h2>Playground</h2>
+      <form id="form">
+        <input type="number" name="number" value="123" size="6" />
+        <button type="button" id="randomize">rnd</button>
+        <button type="submit">set</button>
+      </form>
 
-    <div class="output">
-      <layflags-rolling-number class="rolling" style="--roll-duration: 750ms"
-        >123</layflags-rolling-number
-      >°C
-    </div>
+      <div class="output">
+        <layflags-rolling-number class="rolling" style="--roll-duration: 750ms"
+          >123</layflags-rolling-number
+        >°C
+      </div>
 
-    <p style="font-family: serif; font-style: italic">
-      It's around
-      <layflags-rolling-number class="rolling" style="--roll-duration: 1500ms"
-        >123</layflags-rolling-number
-      >°C at the moment!
-    </p>
+      <p style="font-family: serif; font-style: italic">
+        It's around
+        <layflags-rolling-number class="rolling" style="--roll-duration: 1500ms"
+          >123</layflags-rolling-number
+        >°C at the moment!
+      </p>
 
-    <p></p>
+      <p></p>
 
-    <h2>Usage</h2>
-    <p>
-      <textarea readonly rows="12">
+      <h2>Usage</h2>
+      <p>
+        <textarea readonly rows="12">
 <script type="module" src="https://unpkg.com/@layflags/rolling-number@1.0.0/rolling-number.js"></script>
 
 <!-- value by fallback -->
@@ -142,17 +152,19 @@
 
 <!-- customize roll duration -->
 <layflags-rolling-number style="--roll-duration:750ms">123</layflags-rolling-number>
-      </textarea>
-    </p>
+      </textarea
+        >
+      </p>
 
-    <hr />
+      <hr />
 
-    <p>
-      <small
-        >2021 by
-        <a href="https://www.layfla.gs" target="_blank">layflags</a></small
-      >
-    </p>
+      <p>
+        <small
+          >2021 by
+          <a href="https://www.layfla.gs" target="_blank">layflags</a></small
+        >
+      </p>
+    </main>
 
     <script>
       document.getElementById("form").addEventListener("submit", (evt) => {
