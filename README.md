@@ -1,3 +1,5 @@
+<a href="https://www.buymeacoffee.com/layflags" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+
 # &lt;layflags-rolling-number&gt;
 
 This easy-to-use inline Web Component shows a nice rolling digit animation and automatically adapts to the surrounding font style.
